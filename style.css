@@ -31,9 +31,33 @@ h2 {
     text-transform: uppercase;
 }
 
+h3 {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+section {
+    padding: var(--spacing);
+}
+
 p {
     margin-bottom: 1em;
     line-height: 1.4em;
+}
+
+blockquote {
+    margin-top: var(--spacing);
+    font-size: 2rem;
+    font-style: italic;
+    text-align: center;
+}
+
+cite {
+    display: block;
+    margin-top: 1rem;
+    font-style: normal;
+    font-size: 1rem;
 }
 
 .neutral-theme {
@@ -50,11 +74,15 @@ p {
 }
 
 .button {
+    display: inline-block;
+    width: max-content;
+    margin-right: 1rem;
     padding: 1rem;
     border: 2px solid var(--button-color);
     font-weight: bold;
     text-decoration: none;
     color: var(--button-color);
+    transition: all 0.3s ease-in-out;
 }
 
 .button:hover {
@@ -62,8 +90,42 @@ p {
     background-color: var(--button-color);
 }
 
+.header-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-link::after {
+    content: "";
+    width: 0;
+    height: 0;
+    margin-left: 1rem;
+    border-style: solid;
+    border-width: .75rem .5rem 0 .5rem;
+    border-color: var(--primary) transparent transparent transparent;
+}
+
+.header-link:hover::after {
+    border-color: white transparent transparent transparent;
+    transition: border-color 0.3s ease-in-out;
+}
+
 .about {
-    padding: var(--spacing);
+    position: relative;
+    margin-bottom: 100px;
+}
+
+/* Triangle Shape*/
+.about::after {
+    content: "";
+    position: absolute;
+    bottom: -100px;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-top: 100px solid var(--primary);
+    border-right: 100vw solid transparent;
 }
 
 .about-container {
@@ -76,6 +138,64 @@ p {
     width: 100%;
     max-width: 350px;
     margin: 0 auto var(--spacing);
+    filter: grayscale(100%);
+}
+
+.about-img:hover {
+    filter: grayscale(0);
+}
+
+article {
+    display: flex;
+    flex-direction: column-reverse;
+    margin-bottom: var(--spacing);
+}
+
+.article-img {
+    margin-bottom: 2rem;
+}
+
+.contact {
+    text-align: center;
+}
+
+footer {
+    padding: var(--spacing);
+    text-align: center;
+    background-color: #333;
+    color: white;
+}
+
+.social {
+    display: flex;
+    justify-content: center;
+    margin-bottom: var(--spacing);
+}
+
+.social-item {
+    margin: 0 2rem;
+}
+
+.social-link {
+    display: block;
+    width: 60px;
+    height: 60px;
+    font-size: 0;
+    background: no-repeat;
+    background-size: 60px;
+}
+
+.linkedin {
+    background-image: url(images/linkedin.svg);
+}
+
+.github {
+    background-image: url(images/github.svg);
+}
+
+.social-link:hover {
+    transform: scale(1.2);
+    transition: transform 0.3s ease-in-out;
 }
 
 @media (min-width: 800px) {
@@ -86,5 +206,17 @@ p {
 
     .about-text {
         margin-left: var(--spacing);
+    }
+
+    article {
+        flex-direction: row;
+        max-width: 960px;
+        margin: 0 auto var(--spacing);
+    }
+
+    .article-img {
+        margin-left: 2rem;
+        max-width: 350px;
+        object-fit: contain;
     }
 }
