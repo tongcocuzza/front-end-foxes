@@ -1,6 +1,9 @@
 :root {
     --primary: red;
     --spacing: 4rem;
+    --dk-grey: #333;
+    --max-width: 960px;
+    --img-width: 350px;
 }
 
 body {
@@ -17,10 +20,11 @@ header {
 }
 
 h1 {
-    margin-bottom: 2rem;
-    font-size: 5vw;
+    margin-bottom: var(--spacing);
+    font-size: clamp(3rem, 5vw, 200rem);
     font-weight: bold;
     line-height: 1.4em;
+    color: var(--dk-grey);
 }
 
 h2 {
@@ -160,7 +164,20 @@ article {
 }
 
 .contact {
+    position: relative;
+    margin-top: 100px;
     text-align: center;
+}
+
+.contact::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: -100px;
+    width: 0;
+    height: 0;
+    border-bottom: 100px solid var(--primary);
+    border-left: 100vw solid transparent;
 }
 
 footer {
